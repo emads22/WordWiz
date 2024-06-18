@@ -1,10 +1,7 @@
 import logging
 import justpy as jp
 from webpages import about, dictionary, home, navbar
-from pprint import pprint
-from definition import Definition
-from config import LOG_FILE, DATA_FILE
-
+from config import LOG_FILE
 
 
 # Create the directory for log files if it doesn't exist, and Ensure parent directories are created if they don't exist
@@ -16,30 +13,12 @@ logging.basicConfig(filename=LOG_FILE,
                     level=logging.DEBUG)
 
 
-def main():
-    try:
-        word = input("\n- Enter word: ")
+# Define JustPy routes
+jp.Route(about.About.path, about.About.serve)
+jp.Route(home.Home.path, home.Home.serve)
+jp.Route(dictionary.Dictionary.path, dictionary.Dictionary.serve)
+jp.Route(navbar.Navbar.path, navbar.Navbar.serve)
 
-        print(f"\n\n>> Definitions of {word}:\n\n")
-
-        pprint(Definition(word).get())
-
-        print("\n\n")
-
-    except Exception as e:
-        # Log any exceptions that occur during the execution of the main function
-        logging.error(f"An unexpected error occurred: {e}", exc_info=True)
-
-
-def webapp():
-    
-    jp.Route(about.About.path, about.About.serve)
-    jp.Route(home.Home.path, home.Home.serve)
-    jp.Route(dictionary.Dictionary.path, dictionary.Dictionary.serve)
-
-    jp.justpy()
 
 if __name__ == "__main__":
-    # main()
-
-    webapp()
+    jp.justpy()

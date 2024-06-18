@@ -1,24 +1,60 @@
 import justpy as jp
+from definition import Definition
 
 
 class Dictionary:
     path = "/dictionary"
 
-    def serve(self):
+    @classmethod
+    def serve(cls, request):
+        # Create a QuasarPage instance
         wp = jp.QuasarPage(tailwind=True)
 
+        # Main Div for layout
         main_div = jp.Div(a=wp, classes="bg-gray-200 h-screen")
+
         # Title
-        jp.Div(
-            a=main_div, text="Instant English Dictionary", classes="text-4xl m-2")
+        jp.Div(a=main_div, text="Instant English Dictionary",
+               classes="text-4xl m-2")
+
         # Description
-        jp.Div(
-            a=main_div, text="Get the definition of any English word instantly as you type.", classes="text-lg m-2")
-        # Word Input
-        jp.Input(a=main_div, placeholder="Type in a word here...",
-                 classes="m-2 bg-gray-100 border-2 border-gray-200 rounded w-64 focus:bg-white focus:outline-none focus:border-purple-500 py-2 px-4 ")
-        # Definition Output
-        jp.Div(
+        jp.Div(a=main_div, text="Get the definition of any English word instantly as you type.",
+               classes="text-lg m-2")
+
+        # Div for input and button (grid layout)
+        input_div = jp.Div(a=main_div, classes="grid grid-cols-2")
+
+        # Div for displaying definitions
+        output_div = jp.Div(
             a=main_div, classes="m-2 p-2 text-lg border-2 border-gray-300 h-40")
 
+        # Input box for word entry
+        input_box = jp.Input(a=input_div, placeholder="Type in a word here...", outputdiv=output_div,
+                             classes="m-2 bg-gray-100 border-2 border-gray-200 rounded w-64 focus:bg-white focus:outline-none focus:border-purple-500 py-2 px-4 ")
+
+        # # METHOD 1: Event handler for input box to fetch definitions using a button
+        # jp.Button(a=input_div, text="Define", classes="border-2 text-gray-500",
+        #           inputbox=input_box, outputdiv=output_div).on('click', cls.get_definition)
+
+        # METHOD 2: Event handler for input box to fetch definitions automatically
+        input_box.on('input', cls.get_definition_auto)
+
         return wp
+
+    @staticmethod
+    def get_definition(widget, msg):
+        # Get the word from the input box
+        word = widget.inputbox.value
+        # Get definitions for the word
+        definitions = Definition(word).get()
+        # Display definitions in the output div
+        widget.outputdiv.text = " --- ".join(definitions)
+
+    @staticmethod
+    def get_definition_auto(widget, msg):
+        # Get the word from the input box
+        word = widget.value
+        # Get definitions for the word
+        definitions = Definition(word).get()
+        # Display definitions in the output div
+        widget.outputdiv.text = " --- ".join(definitions)
