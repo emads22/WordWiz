@@ -15,11 +15,3 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vi
 """, classes="text-lg")
 
         return wp
-
-
-jp.Route(About.path, About.serve)
-
-
-if __name__ == "__main__":
-
-    jp.justpy()

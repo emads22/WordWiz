@@ -1,7 +1,10 @@
 import logging
+import justpy as jp
+from webpages import about, dictionary, home, navbar
 from pprint import pprint
 from definition import Definition
 from config import LOG_FILE, DATA_FILE
+
 
 
 # Create the directory for log files if it doesn't exist, and Ensure parent directories are created if they don't exist
@@ -28,5 +31,14 @@ def main():
         logging.error(f"An unexpected error occurred: {e}", exc_info=True)
 
 
+def webapp():
+    
+    jp.Route(about.About.path, about.About.serve)
+    jp.Route(home.Home.path, home.Home.serve)
+
+    jp.justpy()
+
 if __name__ == "__main__":
-    main()
+    # main()
+
+    webapp()
