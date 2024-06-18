@@ -35,6 +35,7 @@ def webapp():
     
     jp.Route(about.About.path, about.About.serve)
     jp.Route(home.Home.path, home.Home.serve)
+    jp.Route(dictionary.Dictionary.path, dictionary.Dictionary.serve)
 
     jp.justpy()
 
