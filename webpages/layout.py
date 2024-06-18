@@ -7,9 +7,9 @@ class DefaultLayout(jp.QLayout):
     in the same hierarchy and with same attribues
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, view="hHh lpR fFf", **kwargs):
         # Initialize the base QLayout with provided arguments
-        super().__init__(**kwargs)
+        super().__init__(view=view, **kwargs)
 
         # No need anymore for `layout = jp.QLayout(a=wp, view="hHh lpR fFf")` since this is a inherted class from jp.QLayout so the DefaultLayout class instance sends `a` and `view` which they are in kwargs and directly sent to jp.QLayout class using `super()`, then we change all occurences of layout to self and bring back the Event Handler static method from `Home` class and change it from `cls.move_drawer` to `self.move_drawer` cz here its theres an __init__() method
 

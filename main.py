@@ -1,6 +1,10 @@
 import logging
 import justpy as jp
-from webpages import about, dictionary, home, navbar
+from pprint import pprint
+from webpages.home import Home
+from webpages.about import About
+from webpages.dictionary import Dictionary
+from webpages.navbar import Navbar
 from config import LOG_FILE
 
 
@@ -13,11 +17,15 @@ logging.basicConfig(filename=LOG_FILE,
                     level=logging.DEBUG)
 
 
-# Define JustPy routes
-jp.Route(about.About.path, about.About.serve)
-jp.Route(home.Home.path, home.Home.serve)
-jp.Route(dictionary.Dictionary.path, dictionary.Dictionary.serve)
-jp.Route(navbar.Navbar.path, navbar.Navbar.serve)
+# The globals() dictionary can change dynamically as new variables and functions are defined. Looping through globals().items() directly can cause errors if the dictionary is modified during iteration. Converting it to a list first prevents this issue by creating a static snapshot of the current global objects.
+imports = list(globals().values())
+
+# Iterate through each object in the list of global objects
+for obj in imports:
+    # Check if the object has both 'path' and 'serve' attributes
+    if hasattr(obj, 'path') and hasattr(obj, 'serve'):
+        # Register the route with JustPy
+        jp.Route(obj.path, obj.serve)
 
 
 if __name__ == "__main__":

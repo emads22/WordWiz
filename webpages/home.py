@@ -11,7 +11,7 @@ class Home:
         wp = jp.QuasarPage(tailwind=True)
 
         # Use the DefaultLayout for the page
-        the_layout = layout.DefaultLayout(a=wp, view="hHh lpR fFf")
+        the_layout = layout.DefaultLayout(a=wp)
 
         # Create a container for the main content of the page
         container = jp.QPageContainer(a=the_layout)
