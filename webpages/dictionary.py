@@ -1,4 +1,5 @@
 import justpy as jp
+from webpages import layout
 from definition import Definition
 
 
@@ -10,14 +11,20 @@ class Dictionary:
         # Create a QuasarPage instance
         wp = jp.QuasarPage(tailwind=True)
 
-        # Main Div for layout
-        main_div = jp.Div(a=wp, classes="bg-gray-200 h-screen")
+        # Use the DefaultLayout for the page
+        the_layout = layout.DefaultLayout(a=wp, view="hHh lpR fFf")
 
-        # Title
+        # Create a container for the main content of the page
+        container = jp.QPageContainer(a=the_layout)
+
+        # Main Div for layout
+        main_div = jp.Div(a=container, classes="bg-gray-200 h-screen")
+
+        # Add a title to the main content
         jp.Div(a=main_div, text="Instant English Dictionary",
                classes="text-4xl m-2")
 
-        # Description
+        # Add a description to the main content
         jp.Div(a=main_div, text="Get the definition of any English word instantly as you type.",
                classes="text-lg m-2")
 
@@ -39,7 +46,7 @@ class Dictionary:
         # METHOD 2: Event handler for input box to fetch definitions automatically
         input_box.on('input', cls.get_definition_auto)
 
-        return wp
+        return wp  # Return the Quasar page
 
     @staticmethod
     def get_definition(widget, msg):
