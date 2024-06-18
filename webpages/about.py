@@ -1,8 +1,8 @@
 import justpy as jp
-from webpages import layout
+from webpages import layout, page
 
 
-class About:
+class About(page.Page):
     path = "/about"
 
     def serve(self):
@@ -20,11 +20,11 @@ class About:
 
         # Add a title to the main content
         jp.Div(
-            a=main_div, text="This is About Page", classes="text-4xl m-2")
+            a=main_div, text="About Us", classes="text-4xl m-2")
 
         # Add a description to the main content
         jp.Div(a=main_div, text="""
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Duis ut eros sit amet justo varius scelerisque non eu erat. Quisque lacinia, metus nec hendrerit pharetra, quam augue venenatis justo, in facilisis odio tortor nec nulla. Morbi euismod, risus et convallis varius, elit est tincidunt ligula, nec scelerisque nisi eros sit amet metus. Aliquam erat volutpat. Proin ut dolor eget erat bibendum facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum in libero euismod, cursus arcu non, dictum urna.
+Welcome to WordWiz, the revolutionary web app designed to redefine how you explore language. At WordWiz, we believe in the power of instant knowledge. Our intuitive platform provides real-time definitions for any word you input, eliminating the need for buttons or delays. Simply type, and watch the meaning unfold before your eyes. Whether you're a student, writer, or language enthusiast, WordWiz is your go-to tool for quick and effortless understanding. Dive into the world of words with unprecedented ease and efficiency, and let WordWiz be your companion in expanding your vocabulary seamlessly.
 """, classes="text-lg m-2")
 
         return wp  # Return the Quasar page

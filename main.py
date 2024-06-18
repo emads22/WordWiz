@@ -1,10 +1,10 @@
 import logging
+import inspect
 import justpy as jp
-from pprint import pprint
 from webpages.home import Home
 from webpages.about import About
 from webpages.dictionary import Dictionary
-from webpages.navbar import Navbar
+from webpages.page import Page
 from config import LOG_FILE
 
 
@@ -22,10 +22,19 @@ imports = list(globals().values())
 
 # Iterate through each object in the list of global objects
 for obj in imports:
-    # Check if the object has both 'path' and 'serve' attributes
-    if hasattr(obj, 'path') and hasattr(obj, 'serve'):
-        # Register the route with JustPy
-        jp.Route(obj.path, obj.serve)
+    # # METHOD 1:
+    # # Check if the object has both 'path' and 'serve' attributes
+    # if hasattr(obj, 'path') and hasattr(obj, 'serve'):
+    #     # Register the route with JustPy
+    #     jp.Route(obj.path, obj.serve)
+
+    # METHOD 2: more robust using abstract class
+    # Check if the object is a class
+    if inspect.isclass(obj):
+        # Check if the class is a subclass of the abstract class 'Page' and not the 'Page' class itself
+        if issubclass(obj, Page) and obj is not Page:
+            # Register the route with JustPy
+            jp.Route(obj.path, obj.serve)
 
 
 if __name__ == "__main__":

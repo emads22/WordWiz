@@ -1,8 +1,8 @@
 import justpy as jp
-from webpages import layout
+from webpages import layout, page
 
 
-class Home:
+class Home(page.Page):
     path = "/"  # URL path for the home page
 
     @classmethod
@@ -20,11 +20,11 @@ class Home:
         main_div = jp.Div(a=container, classes="bg-gray-200 h-screen")
 
         # Add a title to the main content
-        jp.Div(a=main_div, text="This is Home Page", classes="text-4xl m-2")
+        jp.Div(a=main_div, text="WordWiz", classes="text-4xl m-2")
 
         # Add a description to the main content
         jp.Div(a=main_div, text="""
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Duis ut eros sit amet justo varius scelerisque non eu erat. Quisque lacinia, metus nec hendrerit pharetra, quam augue venenatis justo, in facilisis odio tortor nec nulla. Morbi euismod, risus et convallis varius, elit est tincidunt ligula, nec scelerisque nisi eros sit amet metus. Aliquam erat volutpat. Proin ut dolor eget erat bibendum facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum in libero euismod, cursus arcu non, dictum urna.
+        Welcome to WordWiz, your ultimate destination for instant word definitions. Experience the magic of real-time knowledge as you type, with no need to press any buttons. Our cutting-edge platform is designed to provide you with immediate, accurate definitions to enhance your understanding and expand your vocabulary effortlessly. 
         """, classes="text-lg m-2")
 
         return wp  # Return the Quasar page

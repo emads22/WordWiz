@@ -1,9 +1,9 @@
 import justpy as jp
-from webpages import layout
+from webpages import layout, page
 from definition import Definition
 
 
-class Dictionary:
+class Dictionary(page.Page):
     path = "/dictionary"
 
     @classmethod
@@ -21,11 +21,11 @@ class Dictionary:
         main_div = jp.Div(a=container, classes="bg-gray-200 h-screen")
 
         # Add a title to the main content
-        jp.Div(a=main_div, text="Instant English Dictionary",
+        jp.Div(a=main_div, text="WordWiz Dictionary",
                classes="text-4xl m-2")
 
         # Add a description to the main content
-        jp.Div(a=main_div, text="Get the definition of any English word instantly as you type.",
+        jp.Div(a=main_div, text="Instantly discover the definition of any English word as you type. Enjoy seamless and immediate access to meanings, empowering your understanding and enhancing your vocabulary without any delays.",
                classes="text-lg m-2")
 
         # Div for input and button (grid layout)
