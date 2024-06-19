@@ -8,4 +8,4 @@ LOGO_FILE = IMAGES / "logo1.svg"
 
 # Define the API routes
 BASE_URL = "http://127.0.0.1:8080"
-WORDWIZ_API_ROUTE = '/wordwiz/api/v1/dictionary'
+WORDWIZ_API_ROUTE = '/wordwiz/api/v1/define'
