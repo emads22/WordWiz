@@ -13,5 +13,5 @@
 # Ignore Planning folder
 Planning/
 
-# Ignore app.log file in any subfolder
-**/app.log
+# Ignore justpy.env file 
+**/justpy.env

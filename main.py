@@ -1,4 +1,3 @@
-import logging
 import inspect
 import justpy as jp
 from webpages.home import Home
@@ -6,17 +5,6 @@ from webpages.about import About
 from webpages.dictionary import Dictionary
 from webpages.documentation import Documentation
 from webpages.page import Page
-from config import LOG_FILE
-
-
-# Create the directory for log files if it doesn't exist, and Ensure parent directories are created if they don't exist
-LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
-
-
-# # Configure the logging format and level
-# logging.basicConfig(filename=LOG_FILE,
-#                     format='%(asctime)s - %(levelname)s - %(message)s (%(module)s:%(filename)s:%(lineno)d)',
-#                     level=logging.DEBUG)
 
 
 # The globals() dictionary can change dynamically as new variables and functions are defined. Looping through globals().items() directly can cause errors if the dictionary is modified during iteration. Converting it to a list first prevents this issue by creating a static snapshot of the current global objects.

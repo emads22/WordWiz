@@ -69,22 +69,9 @@ class Dictionary(page.Page):
             widget.outputdiv.text = ""
             return
 
-        # PREVIOUSLY: Get definitions for the word directly from definition class/app
-        try:
-            definitions = Definition(word).get()
-        except Exception as e:
-            # Log the error
-            logging.error(
-                f"Error while retrieving definitions for '{word}': {e}")
-            # Display error message
-            widget.outputdiv.text = "An error occurred while retrieving definitions. Please try again later."
-            return
-
-        # # Use this app own API to get definitions by sending a GET request to the WordWiz API with a specified timeout (maximum time in seconds that the request should wait for a response from the server before raising exceptions.Timeout exception)
+        # # PREVIOUSLY: Get definitions for the word directly from definition class/app
         # try:
-        #     with requests.get(f"{BASE_URL}{WORDWIZ_API_ROUTE}?word={word}", timeout=5) as response:
-        #         response.raise_for_status()
-        #         definitions = response.json()
+        #     definitions = Definition(word).get()
         # except Exception as e:
         #     # Log the error
         #     logging.error(
@@ -92,6 +79,20 @@ class Dictionary(page.Page):
         #     # Display error message
         #     widget.outputdiv.text = "An error occurred while retrieving definitions. Please try again later."
         #     return
+
+        # Use this app own API to get definitions by sending a GET request to the WordWiz API with a specified timeout (maximum time in seconds that the request should wait for a response from the server before raising exceptions.Timeout exception)
+        try:
+            with requests.get(f"{BASE_URL}{WORDWIZ_API_ROUTE}?word={word}", timeout=5) as response:
+                response.raise_for_status()
+                data = response.json()
+                definitions = data['definitions']
+        except Exception as e:
+            # Log the error
+            logging.error(
+                f"Error while retrieving definitions for '{word}': {e}")
+            # Display error message
+            widget.outputdiv.text = "An error occurred while retrieving definitions. Please try again later."
+            return
 
         if not definitions:
             # If definitions list is empty, log then display a message
