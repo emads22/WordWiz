@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 from config import DATA_FILE
 
@@ -7,9 +8,6 @@ class Definition:
     A class to retrieve definitions for a given term from a DataFrame.
     """
 
-    # Assuming DATA_FILE is a global variable representing the path to the CSV file
-    df = pd.read_csv(DATA_FILE)
-
     def __init__(self, term: str) -> None:
         """
         Initializes the Definition object with the given term.
@@ -17,7 +15,12 @@ class Definition:
         Parameters:
         - term (str): The term for which definitions will be retrieved.
         """
-        self.term = term
+        self.term = term.lower()  # to be case insensitive
+        self.df = None
+        try:
+            self.df = pd.read_csv(DATA_FILE)
+        except FileNotFoundError as e:
+            logging.error(f"Data file '{DATA_FILE}' not found: {e}")
 
     def get(self) -> list:
         """
@@ -26,7 +29,15 @@ class Definition:
         Returns:
         - list: A list of definitions for the term.
         """
-        # Filter the DataFrame to get definitions for the given term
-        definitions = self.df.loc[self.df['word']
-                                  == self.term]['definition'].tolist()
-        return definitions
+        if self.df is None:
+            return []  # Return an empty list if DataFrame is not initialized
+
+        try:
+            # Filter the DataFrame to get definitions for the given term
+            definitions = self.df.loc[self.df['word']
+                                      == self.term]['definition'].tolist()
+            return definitions
+
+        except KeyError as e:
+            logging.error(f"Key error occurred: {e}")
+            return []  # Return an empty list if the term is not found in the DataFrame

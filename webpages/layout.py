@@ -40,6 +40,9 @@ class DefaultLayout(jp.QLayout):
         jp.Br(a=qlist)  # Line break for spacing
         jp.A(a=qlist, href="/about", text="About",
              classes=a_classes)  # About link
+        jp.Br(a=qlist)  # Line break for spacing
+        jp.A(a=qlist, href="/api-docs", text="WordWiz API Docs",
+             classes=a_classes)  # About link
 
         # Create a button in the toolbar to toggle the drawer, styled with yellow text
         toggle_btn = jp.QBtn(a=toolbar, dense=True, flat=True,
