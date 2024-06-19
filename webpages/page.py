@@ -20,5 +20,5 @@ class Page(ABC):
         for _ in range(4):  # Add 4 line breaks
             jp.Br(a=parent)
         # Adds a footer element with copyright information.
-        jp.Footer(a=parent, text="© E>, 2024",
+        jp.Footer(a=parent, text="© E> - 2024",
                   classes="text-lg text-right text-yellow-400 m-4")
