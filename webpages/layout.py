@@ -1,4 +1,9 @@
+import logging
 import justpy as jp
+
+
+# Retrieve or create logger instance for current module
+logger = logging.getLogger(__name__)
 
 
 class DefaultLayout(jp.QLayout):
@@ -13,44 +18,51 @@ class DefaultLayout(jp.QLayout):
         # Initialize the base QLayout with provided arguments
         super().__init__(view=view, **kwargs)
 
-        # Add a header to the layout with a dark background and yellow text
-        header = jp.QHeader(a=self, classes="bg-gray-800 text-yellow-400")
+        try:
+            # Add a header to the layout with a dark background and yellow text
+            header = jp.QHeader(a=self, classes="bg-gray-800 text-yellow-400")
 
-        # Add a toolbar to the header with matching background
-        toolbar = jp.QToolbar(a=header, classes="bg-gray-800")
+            # Add a toolbar to the header with matching background
+            toolbar = jp.QToolbar(a=header, classes="bg-gray-800")
 
-        # Create a drawer (sidebar) for the layout with a dark background and light text
-        left_drawer = jp.QDrawer(
-            a=self, show_if_above=True, v_model="leftDrawerOpen", bordered=True, classes="bg-gray-900 text-gray-300")
+            # Create a drawer (sidebar) for the layout with a dark background and light text
+            left_drawer = jp.QDrawer(
+                a=self, show_if_above=True, v_model="leftDrawerOpen", bordered=True, classes="bg-gray-900 text-gray-300")
 
-        # Add a scroll area to the drawer with a dark background
-        scroller = jp.QScrollArea(a=left_drawer, classes="fit bg-gray-900")
+            # Add a scroll area to the drawer with a dark background
+            scroller = jp.QScrollArea(a=left_drawer, classes="fit bg-gray-900")
 
-        # Create a list within the scroll area
-        qlist = jp.QList(a=scroller, classes="bg-gray-900 mt-6")
+            # Create a list within the scroll area
+            qlist = jp.QList(a=scroller, classes="bg-gray-900 mt-6")
 
-        # Define the CSS classes for the anchor tags to use the color scheme
-        a_classes = "m-3 p-2 text-lg text-yellow-400 hover:text-yellow-600"
+            # Define the CSS classes for the anchor tags to use the color scheme
+            a_classes = "m-3 p-2 text-lg text-yellow-400 hover:text-yellow-600"
 
-        # Add anchor tags (links) to the list
-        jp.A(a=qlist, href="/", text="Home", classes=a_classes)  # Home link
-        jp.Br(a=qlist)  # Line break for spacing
-        jp.A(a=qlist, href="/dictionary", text="Dictionary",
-             classes=a_classes)  # Dictionary link
-        jp.Br(a=qlist)  # Line break for spacing
-        jp.A(a=qlist, href="/about", text="About",
-             classes=a_classes)  # About link
-        jp.Br(a=qlist)  # Line break for spacing
-        jp.A(a=qlist, href="/api-docs", text="WordWiz API Docs",
-             classes=a_classes)  # About link
+            # Add anchor tags (links) to the list
+            jp.A(a=qlist, href="/", text="Home",
+                 classes=a_classes)  # Home link
+            jp.Br(a=qlist)  # Line break for spacing
+            jp.A(a=qlist, href="/dictionary", text="Dictionary",
+                 classes=a_classes)  # Dictionary link
+            jp.Br(a=qlist)  # Line break for spacing
+            jp.A(a=qlist, href="/about", text="About",
+                 classes=a_classes)  # About link
+            jp.Br(a=qlist)  # Line break for spacing
+            jp.A(a=qlist, href="/api-docs", text="WordWiz API Docs",
+                 classes=a_classes)  # About link
 
-        # Create a button in the toolbar to toggle the drawer, styled with yellow text
-        toggle_btn = jp.QBtn(a=toolbar, dense=True, flat=True,
-                             round=True, icon="menu", click=self.move_drawer, classes="text-yellow-400")
-        toggle_btn.drawer = left_drawer  # Attach the drawer to the button for easy access
+            # Create a button in the toolbar to toggle the drawer, styled with yellow text
+            toggle_btn = jp.QBtn(a=toolbar, dense=True, flat=True,
+                                 round=True, icon="menu", click=self.move_drawer, classes="text-yellow-400")
+            toggle_btn.drawer = left_drawer  # Attach the drawer to the button for easy access
 
-        # Add a title to the toolbar with yellow text
-        jp.QToolbarTitle(a=toolbar, text="WordWiz", classes="text-yellow-400")
+            # Add a title to the toolbar with yellow text
+            jp.QToolbarTitle(a=toolbar, text="WordWiz",
+                             classes="text-yellow-400")
+
+        except Exception:
+            # Log any exceptions using the custom logger
+            logger.exception("An exception occurred")
 
     @staticmethod
     def move_drawer(widget, msg):

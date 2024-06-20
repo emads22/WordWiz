@@ -5,7 +5,11 @@ from webpages.about import About
 from webpages.dictionary import Dictionary
 from webpages.documentation import Documentation
 from webpages.page import Page
+from app_logger import AppLogger
 
+
+# Initialize an AppLogger instance
+app_logger = AppLogger().logger
 
 # The globals() dictionary can change dynamically as new variables and functions are defined. Looping through globals().items() directly can cause errors if the dictionary is modified during iteration. Converting it to a list first prevents this issue by creating a static snapshot of the current global objects.
 imports = list(globals().values())
@@ -27,4 +31,10 @@ for obj in imports:
             jp.Route(obj.path, obj.serve)
 
 if __name__ == "__main__":
-    jp.justpy()
+
+    try:
+        jp.justpy()
+
+    except Exception:
+        # Log the exception with stack trace (automatically without passing {e} cz `logger.exception()`)
+        app_logger.exception("An unexpected error occurred")
