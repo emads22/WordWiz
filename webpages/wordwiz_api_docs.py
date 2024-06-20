@@ -1,6 +1,7 @@
 import logging
 import justpy as jp
 from webpages import layout, page
+from config import API_DOCS_ROUTE
 
 
 # Retrieve or create logger instance for current module
@@ -8,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class WordWizAPIDocs(page.Page):
-    path = "/api-docs"  # URL path for the home page
+    path = API_DOCS_ROUTE
 
     @classmethod
     def serve(cls, request):

@@ -1,6 +1,7 @@
 import logging
 import justpy as jp
 from webpages import layout, page
+from config import ABOUT_ROUTE
 
 
 # Retrieve or create logger instance for current module
@@ -8,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class About(page.Page):
-    path = "/about"
+    path = ABOUT_ROUTE
 
     @classmethod
     def serve(cls, request):

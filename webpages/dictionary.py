@@ -4,7 +4,7 @@ import time
 import justpy as jp
 from webpages import layout, page
 from definition import Definition
-from config import BASE_URL, WORDWIZ_API_ROUTE, MIN_INPUT_LENGTH
+from config import DICTIONARY_ROUTE, BASE_URL, WORDWIZ_API_ROUTE, MIN_INPUT_LENGTH
 
 
 # Retrieve or create logger instance for current module
@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class Dictionary(page.Page):
-    path = "/dictionary"
+    path = DICTIONARY_ROUTE
 
     @classmethod
     def serve(cls, request):

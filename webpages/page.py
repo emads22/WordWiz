@@ -3,11 +3,24 @@ from abc import ABC, abstractmethod
 
 
 class Page(ABC):
-    # This is an abstract class representing a web page.
+    """
+    Abstract base class for web pages.
+    """
 
-    @abstractmethod
-    def serve(self):
-        # This method is abstract and must be implemented by subclasses.
+    path = ""
+
+    @classmethod  # applied first
+    @abstractmethod  # applied second
+    def serve(cls, request):
+        """
+        Abstract method to serve the page content.
+
+        Args:
+            cls: The class itself.
+            request: The request object.
+
+        Must be implemented by subclasses.
+        """
         pass
 
     @classmethod
