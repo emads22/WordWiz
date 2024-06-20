@@ -24,7 +24,7 @@ class Home(page.Page):
 
             # Main div with dark background color and full height
             main_div = jp.Div(
-                a=container, classes="bg-gray-900 text-yellow-300 h-screen p-4")
+                a=container, classes="bg-gray-900 text-yellow-300 min-h-screen p-4")
 
             # Add a title to the main content with large font size and bold text
             jp.Div(a=main_div, text="WordWiz",

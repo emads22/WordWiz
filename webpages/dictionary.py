@@ -1,9 +1,10 @@
 import logging
 import requests
+import time
 import justpy as jp
 from webpages import layout, page
 from definition import Definition
-from config import BASE_URL, WORDWIZ_API_ROUTE
+from config import BASE_URL, WORDWIZ_API_ROUTE, MIN_INPUT_LENGTH
 
 
 # Retrieve or create logger instance for current module
@@ -92,6 +93,9 @@ class Dictionary(page.Page):
 
         # Use this app own API to get definitions by sending a GET request to the WordWiz API with a specified timeout (maximum time in seconds that the request should wait for a response from the server before raising exceptions.Timeout exception)
         try:
+            if len(word) < MIN_INPUT_LENGTH or not word.isalpha():
+                # Minimum input length not met or not letters chars, do not send request to reduce sending too much requests and avoid lagging
+                return
             with requests.get(f"{BASE_URL}{WORDWIZ_API_ROUTE}?word={word}", timeout=5) as response:
                 response.raise_for_status()
                 data = response.json()

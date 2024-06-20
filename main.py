@@ -3,7 +3,7 @@ import justpy as jp
 from webpages.home import Home
 from webpages.about import About
 from webpages.dictionary import Dictionary
-from webpages.documentation import Documentation
+from webpages.wordwiz_api_docs import WordWizAPIDocs
 from webpages.page import Page
 from app_logger import AppLogger
 

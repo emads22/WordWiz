@@ -1,5 +1,6 @@
 import logging
 import justpy as jp
+from config import HOME_ROUTE, DICTIONARY_ROUTE, ABOUT_ROUTE, API_DOCS_ROUTE
 
 
 # Retrieve or create logger instance for current module
@@ -39,16 +40,16 @@ class DefaultLayout(jp.QLayout):
             a_classes = "m-3 p-2 text-lg text-yellow-400 hover:text-yellow-600"
 
             # Add anchor tags (links) to the list
-            jp.A(a=qlist, href="/", text="Home",
+            jp.A(a=qlist, href=HOME_ROUTE, text="Home",
                  classes=a_classes)  # Home link
             jp.Br(a=qlist)  # Line break for spacing
-            jp.A(a=qlist, href="/dictionary", text="Dictionary",
+            jp.A(a=qlist, href=DICTIONARY_ROUTE, text="Dictionary",
                  classes=a_classes)  # Dictionary link
             jp.Br(a=qlist)  # Line break for spacing
-            jp.A(a=qlist, href="/about", text="About",
+            jp.A(a=qlist, href=ABOUT_ROUTE, text="About",
                  classes=a_classes)  # About link
             jp.Br(a=qlist)  # Line break for spacing
-            jp.A(a=qlist, href="/api-docs", text="WordWiz API Docs",
+            jp.A(a=qlist, href=API_DOCS_ROUTE, text="API Documentation",
                  classes=a_classes)  # About link
 
             # Create a button in the toolbar to toggle the drawer, styled with yellow text

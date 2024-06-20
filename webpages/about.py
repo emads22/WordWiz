@@ -45,7 +45,7 @@ class About(page.Page):
                 classes="text-lg text-gray-300 mb-2")
             jp.Div(a=contact_section, text="Phone: +1 (123) 456-7890",
                 classes="text-lg text-gray-300 mb-2")
-            jp.Div(a=contact_section, text="Address: 123 WordWiz Street, Beirut, Lebanon",
+            jp.Div(a=contact_section, text="Address: 123 Street, Beirut, Lebanon",
                 classes="text-lg text-gray-300")
 
             cls.add_footer(main_div)  # Add footer to the main content
