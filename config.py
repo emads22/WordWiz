@@ -15,5 +15,5 @@ API_DOCS_ROUTE = "/api-docs"
 BASE_URL = "http://127.0.0.1:8080"
 WORDWIZ_API_ROUTE = '/wordwiz-api/v1/define'
 
-# Define minimum word input length requirement in the webapp 
-MIN_INPUT_LENGTH = 3  
+# Define minimum word input length requirement in the webapp
+MIN_INPUT_LENGTH = 3

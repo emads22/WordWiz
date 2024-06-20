@@ -40,18 +40,18 @@ class About(page.Page):
             # Add a contact details section
             contact_section = jp.Div(a=main_div, classes="mt-8")
             jp.Div(a=contact_section, text="Contact Us",
-                classes="text-2xl font-bold text-yellow-400 mb-2")
+                   classes="text-2xl font-bold text-yellow-400 mb-2")
             jp.Div(a=contact_section, text="Email: contact@wordwiz.com",
-                classes="text-lg text-gray-300 mb-2")
+                   classes="text-lg text-gray-300 mb-2")
             jp.Div(a=contact_section, text="Phone: +1 (123) 456-7890",
-                classes="text-lg text-gray-300 mb-2")
+                   classes="text-lg text-gray-300 mb-2")
             jp.Div(a=contact_section, text="Address: 123 Street, Beirut, Lebanon",
-                classes="text-lg text-gray-300")
+                   classes="text-lg text-gray-300")
 
             cls.add_footer(main_div)  # Add footer to the main content
 
             return wp  # Return the Quasar page
-        
+
         except Exception:
             # Log any exceptions using the custom logger
             logger.exception("An exception occurred")
