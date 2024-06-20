@@ -1,12 +1,15 @@
 # WordWiz: Instant Dictionary
 
-## Overview
+## Overview (Update)
+**Update**: WordWiz now utilizes the WordWiz-API for fetching word definitions in real-time. Ensure that the WordWiz-API server is running and accessible at [http://localhost:8080](http://localhost:8080) for the application to function correctly.
+
 WordWiz is a web application built on Object-Oriented Programming principles that provides instant word definitions as you type, offering an effortless way to explore language in real-time. With a user-friendly interface and multiple pages, WordWiz simplifies the process of discovering and expanding your vocabulary.
 
 ## Features
 - **Real-time Definitions**: Get instant definitions for any English word as you type.
 - **User-Friendly Interface**: Enjoy a simple and intuitive interface for seamless user experience.
 - **Multiple Pages**: Includes home, about, and dictionary pages for comprehensive functionality.
+- **Custom Logger**: Easily add a custom logger to track and manage application logs efficiently. Users are free to adjust custom logging settings by modifying the `AppLogger` class according to their requirements.
 
 ## Setup
 1. Clone the repository.
@@ -17,9 +20,15 @@ WordWiz is a web application built on Object-Oriented Programming principles tha
 
 ## Usage
 1. Run the script using `python main.py`.
-2. Access the application in your web browser.
+2. Access the application in your web browser at [http://localhost:8000](http://localhost:8000).
 3. Navigate between the home, about, and dictionary pages to explore the functionality.
 4. Use the dictionary page to instantly discover word definitions.
+
+## WordWiz-API
+WordWiz now utilizes the WordWiz-API for fetching word definitions in real-time. Ensure that the WordWiz-API server is running and accessible at [http://localhost:8080](http://localhost:8080) for the application to function correctly. For more details about the WordWiz-API, visit its repository on [WordWiz-API](https://github.com/emads22/WordWiz-API.git).
+
+## API Documentation
+Explore the WordWiz-API documentation to understand its endpoints and usage. Access the API documentation at [http://localhost:8000/api-docs](http://localhost:8000/api-docs).
 
 Feel free to explore and enjoy the WordWiz web application!
 
