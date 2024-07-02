@@ -1,7 +1,8 @@
 # WordWiz: Instant Dictionary
 
 ## Overview (Update)
-**Update**: WordWiz now utilizes the WordWiz-API for fetching word definitions in real-time. Ensure that the WordWiz-API server is running and accessible at [http://localhost:8080](http://localhost:8080) for the application to function correctly.
+**Update**: WordWiz now utilizes the [WordWiz-API](https://github.com/emads22/wordwiz-api) for fetching word definitions in real-time. Ensure that the WordWiz-API server is running and accessible at [http://localhost:8080](http://localhost:8080) for the application to function correctly.
+
 
 WordWiz is a web application built on Object-Oriented Programming principles that provides instant word definitions as you type, offering an effortless way to explore language in real-time. With a user-friendly interface and multiple pages, WordWiz simplifies the process of discovering and expanding your vocabulary.
 
@@ -10,6 +11,13 @@ WordWiz is a web application built on Object-Oriented Programming principles tha
 - **User-Friendly Interface**: Enjoy a simple and intuitive interface for seamless user experience.
 - **Multiple Pages**: Includes home, about, and dictionary pages for comprehensive functionality.
 - **Custom Logger**: Easily add a custom logger to track and manage application logs efficiently. Users are free to adjust custom logging settings by modifying the `AppLogger` class according to their requirements.
+
+## Technologies Used
+- **justpy**: A library for building interactive web applications.
+- **pandas**: A data manipulation and analysis library.
+- **requests**: A library for making HTTP requests.
+- **logging**: A module for tracking events that happen when software runs.
+- **inspect**: A module for retrieving live object information.
 
 ## Setup
 1. Clone the repository.
