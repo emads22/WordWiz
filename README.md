@@ -1,5 +1,7 @@
 # WordWiz: Instant Dictionary
 
+![WordWiz_logo](./assets/images/WordWiz_logo.png)
+
 ## Overview (Update)
 **Update**: WordWiz now utilizes the [WordWiz-API](https://github.com/emads22/wordwiz-api) for fetching word definitions in real-time. Ensure that the WordWiz-API server is running and accessible at [http://localhost:8080](http://localhost:8080) for the application to function correctly.
 

@@ -3,7 +3,7 @@ from pathlib import Path
 ASSETS = Path(__file__).parent / "assets"
 LOG_FILE = ASSETS / "log" / "app.log"
 DATA_FILE = ASSETS / "resources" / "data.csv"
-LOGO_FILE = ASSETS / "images" / "logo1.svg"
+LOGO_FILE = ASSETS / "images" / "WordWiz_logo.png"
 
 # Define the App routes
 HOME_ROUTE = "/"
